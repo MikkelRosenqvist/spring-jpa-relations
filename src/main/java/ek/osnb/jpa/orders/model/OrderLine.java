@@ -1,17 +1,37 @@
 package ek.osnb.jpa.orders.model;
 
-public class OrderLine {
+import ek.osnb.jpa.common.model.BaseEntity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+
+
+@Entity
+
+public class OrderLine extends BaseEntity {
+
+    @ManyToOne
+    private Order order;
 
     private String product;
     private double unitPrice;
     private int quantity;
 
+
     public OrderLine() {}
+
 
     public OrderLine(String product, double unitPrice, int quantity) {
         this.product = product;
         this.unitPrice = unitPrice;
         this.quantity = quantity;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     public String getProduct() {
